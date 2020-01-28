@@ -218,6 +218,17 @@ class ApiClient(object):
         return {key: self.sanitize_for_serialization(val)
                 for key, val in six.iteritems(obj_dict)}
 
+    def deserialize_obj(self, obj, response_type):
+        """Deserializes an object.
+
+        :param obj: object to be deserialized.
+        :param response_type: class literal for
+            deserialized object, or string of class name.
+
+        :return: deserialized object.
+        """
+        return self.__deserialize(obj, response_type)
+
     def deserialize(self, response, response_type):
         """Deserializes response into an object.
 
